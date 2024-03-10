@@ -1,65 +1,54 @@
 # Mandelbrot CUDA
-The aim of this project is just for me to practice CUDA programming while trying some fun ideas.
 
-### Commands:
-| Move | Zoom in/out | Increase/Decrease max iteration | Reset | Hide/Show HUD |
-| :---: | :---: | :---: | :---: | :---: |
-| Left-click or WSAD or Arrows| Mousewheel or +/- | E/Q | R | H |
+This project is a CUDA-accelerated Mandelbrot set visualizer implemented in C++. The primary objective of this project is to provide a platform for practicing CUDA programming while exploring various fun ideas associated with fractal visualization.
 
+## Project Overview
 
-The project written in c++ and uses:
-- [CUDA](https://developer.nvidia.com/cuda-zone) 
-- [SFML](https://www.sfml-dev.org/index.php)
+The project comprises several files, each serving a distinct purpose:
 
-## On windows 
+- `main.cpp`: Main entry point of the application where the Mandelbrot set visualization is initialized and managed.
+- `mandelbrot.cu`: CUDA kernel implementation for calculating Mandelbrot set fractals efficiently using GPU parallelization.
+- `hud.cpp` and `hud.h`: Implementation and declaration of the Heads-Up Display (HUD) functionality, allowing users to interact with and control the Mandelbrot visualization.
+- `utils.cpp` and `utils.h`: Utility functions used across the project for tasks such as handling user input and managing display settings.
 
-- [CUDA](https://developer.nvidia.com/cuda-downloads)
-- [SFML](https://www.sfml-dev.org/download.php)
-- [Visual Studio](https://visualstudio.microsoft.com/it/downloads/) (for its MSVC compiler)
+## Dependencies
 
-This program uses the standard CUDA libraries and some SFML libraries.  
+The project relies on both CUDA and SFML libraries:
 
-### For the _dynamic_ linking you will need the following libraries (in VScode, you need to add .lib):
-- sfml-graphics
-- sfml-system
-- sfml-window
+- **CUDA**: The NVIDIA CUDA Toolkit is essential for GPU parallelization and computation.
+- **SFML**: The Simple and Fast Multimedia Library (SFML) is used for graphical output and user interaction. Make sure to link the appropriate SFML libraries based on your platform (Windows or Linux).
 
-The executable will need the following dll(s) to run:
-- sfml-graphics-2.dll
-- sfml-system-2.dll
-- sfml-window-2.dll
+## Building Instructions
 
-### For the _static_ linking you will need the following libraries (in VScode, you need to add .lib):
-- sfml-graphics-s
-- sfml-system-s
-- sfml-window-s
-- opengl32
-- winmm
-- gdi32
-- freetype
+### On Windows
 
-The following flag must be set:
-- SFML_STATIC
+- Install CUDA Toolkit, SFML, and Visual Studio with MSVC compiler.
+- Ensure the required SFML libraries are linked dynamically or statically as per your preference.
+- Set the appropriate compiler flags, such as `SFML_STATIC` for static linking if required.
+- Compile the project using Visual Studio or any preferred IDE, ensuring all necessary dependencies are correctly configured.
 
-## On linux (See linux branch)
-Things to download:
-- [CUDA](https://developer.nvidia.com/cuda-downloads)
-- [SFML](https://www.sfml-dev.org/download.php)
+### On Linux
 
-The program uses the standard CUDA libraries and some SFML libraries.  
-Make sure that the paths to the SFML libraries and headers you downloaded is accessible to the nvidia compiler.
+- Install CUDA Toolkit and SFML on your system.
+- Compile the project using appropriate compiler commands or provided build scripts.
+- Ensure dynamic linking with SFML libraries, as static linking is generally discouraged on Linux.
 
-On linux, using static libraries is usually discuraged, so SFML provides only the dynamic version. You can, however, compile your own static libraries ([guide](https://www.sfml-dev.org/tutorials/2.5/compile-with-cmake.php))
+## Usage
 
-### For the _dynamic_ linking you will need the following libraries:
-- sfml-graphics
-- sfml-system
-- sfml-window
+After successfully building the project, you can run the Mandelbrot visualization application. Depending on your platform and build settings, execute the generated executable with appropriate command-line arguments or flags.
 
-The executable will need the following .so to run:
-- sfml-graphics.so.2.5
-- sfml-system.so.2.5
-- sfml-window.so.2.5
+The application provides various controls for navigating and interacting with the Mandelbrot set visualization:
 
-Run `sh start.sh -h` to know what flags you may want to add, then run `sh start.sh [flags]` with the desired flags.  
-You can also run the nvcc compiler yourself.
+- **Move**: Use arrow keys, WSAD, or mouse clicks to navigate within the fractal space.
+- **Zoom In/Out**: Adjust zoom level using mouse wheel or `+/-` keys.
+- **Increase/Decrease Max Iteration**: Modify maximum iteration count using `E/Q` keys.
+- **Reset**: Reset the visualization to its initial state using `R` key.
+- **Hide/Show HUD**: Toggle visibility of the Heads-Up Display using `H` key.
+
+## Contributing
+
+Contributions to the project are encouraged and welcomed. If you have any ideas for improvements, encounter issues, or wish to suggest new features, feel free to open an issue or submit a pull request on the project's repository.
+
+## License
+
+This project is licensed under [MIT License](LICENSE). Feel free to use, modify, and distribute the code for both personal and commercial purposes, with appropriate attribution to the original authors.
